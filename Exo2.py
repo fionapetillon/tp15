@@ -1,36 +1,41 @@
 from PySide2.QtWidgets import *
 
 class LabeledTextField(QWidget):
+
     def __init__(self, text):
         QWidget.__init__(self)
+        self.layout = QHBoxLayout()
+
+
         self.text = text
+        self.label = QLabel(text)
+        self.textedit = QTextEdit()
+        self.textedit.setMaximumHeight(20)
 
-        layout = QHBoxLayout()
+        self.layout.addWidget(self.label)
+        self.layout.addWidget(self.textedit)
 
-        label = QLabel(text)
-        text_1 = QTextEdit()
-        text_1.setMaximumHeight(20)
+        self.setLayout(self.layout)
 
-        layout.addWidget(label)
-        layout.addWidget(text_1)
 
-        self.setLayout(layout)
 
 class ConfigurationDialog(QDialog):
+
     def __init__(self):
         QDialog.__init__(self)
 
-        self.setWindowTitle("Configuration")
+        self.setWindowTitle("Configuration ")
         self.setMinimumSize(300, 100)
 
-        layout = QVBoxLayout()
+        self.layout = QVBoxLayout()
 
-        label_1 = LabeledTextField("IP address")
-        label_2 = LabeledTextField("User")
-        label_3 = LabeledTextField("Password")
+        self.label1 = LabeledTextField("IP address")
+        self.label2 = LabeledTextField("User")
+        self.label3 = LabeledTextField("Password")
 
-        layout.addWidget(label_1)
-        layout.addWidget(label_2)
-        layout.addWidget(label_3)
+        self.layout.addWidget(self.label1)
+        self.layout.addWidget(self.label2)
+        self.layout.addWidget(self.label3)
 
-        self.setLayout(layout)
+        self.setLayout(self.layout)
+

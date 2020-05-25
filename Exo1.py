@@ -1,37 +1,50 @@
 from PySide2.QtWidgets import *
 
+
 class SQLClientWindow(QWidget):
+
     def __init__(self):
         QWidget.__init__(self)
 
         self.setWindowTitle("SQL Client")
         self.setMinimumSize(600, 400)
-        layout = QVBoxLayout()
+        self.layout = QVBoxLayout()
 
-        buttonspanel = ButtonsPanel()
-        notificationPanel = QTextEdit()
+        self.buttonspanel = ButtonsPanel()
+        self.notificationPanel = QTextEdit()
 
-        resultTable = QTableWidget(5, 3)
-        resultTable.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.resultTable = QTableWidget(5,3)
+        self.resultTable.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
-        layout.addWidget(buttonspanel)
-        layout.addWidget(notificationPanel)
-        layout.addWidget(resultTable)
+        self.layout.addWidget(self.buttonspanel)
+        self.layout.addWidget(self.notificationPanel)
+        self.layout.addWidget(self.resultTable)
 
-        self.setLayout(layout)
+        self.setLayout(self.layout)
 
+
+
+#Etape2
 class ButtonsPanel(QWidget):
     def __init__(self):
         QWidget.__init__(self)
 
-        layout = QHBoxLayout()
+        self.layout = QHBoxLayout()
 
-        button_1 = QPushButton("Configure")
-        button_2 = QPushButton("Connect")
-        button_3 = QPushButton("Disconnect")
+        self.button1 = QPushButton("Configure")
+        self.button2 = QPushButton("Connect")
+        self.button3 = QPushButton("Disconnect")
 
-        layout.addWidget(button_1)
-        layout.addWidget(button_2)
-        layout.addWidget(button_3)
+        self.layout.addWidget(self.button1)
+        self.layout.addWidget(self.button2)
+        self.layout.addWidget(self.button3)
 
-        self.setLayout(layout)
+        self.setLayout(self.layout)
+
+
+if __name__ == "__main__":
+    app = QApplication([])
+    win =SQLClientWindow()
+    win.show()
+    app.exec_()
+
